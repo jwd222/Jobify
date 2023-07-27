@@ -20,6 +20,7 @@ const Register = () => {
     clearAlertWhenToggled,
     registerUser,
   } = useAppContext()
+
   const toggleMember = () => {
     clearAlertWhenToggled()
     setValues({ ...values, isMember: !values.isMember })
