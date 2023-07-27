@@ -24,6 +24,7 @@ const Register = () => {
     displayAlert,
     clearAlertWhenToggled,
     registerUser,
+    loginUser,
   } = useAppContext()
 
   const toggleMember = () => {
@@ -43,7 +44,7 @@ const Register = () => {
     }
     const currentUser = { name, email, password }
     if (isMember) {
-      console.log('already a member')
+      loginUser(currentUser)
     } else {
       registerUser(currentUser)
     }
