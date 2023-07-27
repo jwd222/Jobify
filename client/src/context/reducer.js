@@ -1,6 +1,7 @@
 import {
   DISPLAY_ALERT,
   CLEAR_ALERT,
+  CLEAR_ALERT_WHEN_TOGGLED,
   REGISTER_USER_BEGIN,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
@@ -16,6 +17,14 @@ const reducer = (state, action) => {
     }
   }
   if (action.type === CLEAR_ALERT) {
+    return {
+      ...state,
+      showAlert: false,
+      alertType: '',
+      alertText: '',
+    }
+  }
+  if (action.type === CLEAR_ALERT_WHEN_TOGGLED) {
     return {
       ...state,
       showAlert: false,

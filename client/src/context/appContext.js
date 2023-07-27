@@ -3,6 +3,7 @@ import reducer from './reducer'
 import {
   DISPLAY_ALERT,
   CLEAR_ALERT,
+  CLEAR_ALERT_WHEN_TOGGLED,
   REGISTER_USER_BEGIN,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
@@ -34,12 +35,18 @@ const AppProvider = ({ children }) => {
     }, 3000)
   }
 
+  const clearAlertWhenToggled = () => {
+    dispatch({ type: CLEAR_ALERT_WHEN_TOGGLED })
+  }
+
   const registerUser = async (currentUser) => {
     console.log(currentUser)
   }
 
   return (
-    <AppContext.Provider value={{ ...state, displayAlert, registerUser }}>
+    <AppContext.Provider
+      value={{ ...state, displayAlert, registerUser, clearAlertWhenToggled }}
+    >
       {children}
     </AppContext.Provider>
   )
