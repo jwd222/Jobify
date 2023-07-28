@@ -1,5 +1,4 @@
 import main from '../assets/images/main.svg'
-import styled from 'styled-components'
 import { Logo } from '../components'
 import { Link } from 'react-router-dom'
 import Wrapper from '../assets/wrappers/LandingPage'
