@@ -10,6 +10,8 @@ import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  TOGGLE_SIDEBAR,
+  LOGOUT_USER,
 } from './action'
 import axios from 'axios'
 
@@ -20,6 +22,7 @@ const userLocation = localStorage.getItem('location')
 const initialState = {
   isLoading: false,
   showAlert: false,
+  showSidebar: false,
   alertText: '',
   alertType: '',
   user: user ? JSON.parse(user) : null,
@@ -53,7 +56,7 @@ const AppProvider = ({ children }) => {
     localStorage.setItem('token', token)
     localStorage.setItem('location', location)
   }
-  const deleteUserFromLocalStorage = ({ user, token, location }) => {
+  const removeUserFromLocalStorage = () => {
     localStorage.removeItem('user')
     localStorage.removeItem('token')
     localStorage.removeItem('location')
@@ -112,6 +115,13 @@ const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const toggleSidebar = () => {
+    dispatch({ type: TOGGLE_SIDEBAR })
+  }
+  const logoutUser = () => {
+    dispatch({ type: LOGOUT_USER })
+    removeUserFromLocalStorage()
+  }
   return (
     <AppContext.Provider
       value={{
@@ -120,6 +130,8 @@ const AppProvider = ({ children }) => {
         registerUser,
         loginUser,
         clearAlertWhenToggled,
+        toggleSidebar,
+        logoutUser,
       }}
     >
       {children}
