@@ -1,6 +1,7 @@
 import Wrapper from '../assets/wrappers/SmallSidebar.js'
 import { FaTimes } from 'react-icons/fa'
 import { useAppContext } from '../context/appContext.js'
+
 import Logo from './Logo.js'
 import NavLinks from './NavLinks.js'
 
@@ -14,7 +15,7 @@ const SmallSideBar = () => {
         }
       >
         <div className="content">
-          <button type="button" className="close-btn" onClick={toggleSidebar}>
+          <button className="close-btn" onClick={toggleSidebar}>
             <FaTimes />
           </button>
           <header>
