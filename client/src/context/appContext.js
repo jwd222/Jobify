@@ -36,6 +36,14 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  // axios
+  const authFetch = axios.create({
+    baseURL: '/api/v1',
+    headers: {
+      Authorization: `Bearer ${state.token}`,
+    },
+  })
+
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT })
     clearAlert()
@@ -122,6 +130,16 @@ const AppProvider = ({ children }) => {
     dispatch({ type: LOGOUT_USER })
     removeUserFromLocalStorage()
   }
+
+  const updateUser = async (currentUser) => {
+    // console.log(currentUser)
+    try {
+      const { data } = await authFetch.patch('/auth/updateUser', currentUser)
+      console.log(data)
+    } catch (error) {
+      console.log(error.response)
+    }
+  }
   return (
     <AppContext.Provider
       value={{
@@ -132,6 +150,7 @@ const AppProvider = ({ children }) => {
         clearAlertWhenToggled,
         toggleSidebar,
         logoutUser,
+        updateUser,
       }}
     >
       {children}
