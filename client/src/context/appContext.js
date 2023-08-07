@@ -17,7 +17,6 @@ import {
   UPDATE_USER_ERROR,
 } from './action'
 import axios from 'axios'
-import { disconnect } from 'mongoose'
 
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
