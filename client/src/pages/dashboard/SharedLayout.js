@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { NavBar, SmallSideBar, BigSideBar } from '../../components'
 import Wrapper from '../../assets/wrappers/SharedLayout.js'
 

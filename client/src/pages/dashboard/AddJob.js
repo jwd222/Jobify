@@ -61,6 +61,14 @@ const AddJob = () => {
             value={jobLocation}
             handleChange={handleJobInput}
           />
+          {/* job status */}
+          <FormRowSelect
+            name="status"
+            value={status}
+            handleChange={handleJobInput}
+            list={statusOptions}
+          />
+
           {/* job type */}
           <FormRowSelect
             labelText="type"
@@ -68,14 +76,6 @@ const AddJob = () => {
             value={jobType}
             handleChange={handleJobInput}
             list={jobTypeOptions}
-          />
-
-          {/* job status */}
-          <FormRowSelect
-            name="status"
-            value={status}
-            handleChange={handleJobInput}
-            list={statusOptions}
           />
 
           <div className="btn-container">
