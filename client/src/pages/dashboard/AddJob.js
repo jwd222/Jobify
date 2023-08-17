@@ -68,16 +68,15 @@ const AddJob = () => {
             handleChange={handleJobInput}
             list={statusOptions}
           />
-
           {/* job type */}
           <FormRowSelect
-            labelText="type"
+            labelText="job type"
             name="jobType"
             value={jobType}
             handleChange={handleJobInput}
             list={jobTypeOptions}
           />
-
+          {/* btn container */}
           <div className="btn-container">
             <button
               className="btn btn-block submit-btn"
