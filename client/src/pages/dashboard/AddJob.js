@@ -4,6 +4,7 @@ import { useAppContext } from '../../context/appContext'
 
 const AddJob = () => {
   const {
+    isLoading,
     isEditing,
     showAlert,
     displayAlert,
@@ -16,17 +17,23 @@ const AddJob = () => {
     statusOptions,
     handleChange,
     clearValues,
+    createJob,
   } = useAppContext()
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    // while testing comment below if statement
     if (!position || !company || !jobLocation) {
       displayAlert()
       return
     }
 
-    console.log('Job Created')
+    if (isEditing) {
+      //eventually editJob()
+      return
+    }
+    createJob()
   }
 
   const handleJobInput = (e) => {
@@ -78,13 +85,16 @@ const AddJob = () => {
           />
           {/* btn container */}
           <div className="btn-container">
+            {/* submit btn */}
             <button
               className="btn btn-block submit-btn"
               type="submit"
               onClick={handleSubmit}
+              disabled={isLoading}
             >
               submit
             </button>
+            {/* clear btn */}
             <button
               className="btn btn-block clear-btn"
               onClick={(e) => {
