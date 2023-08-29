@@ -5,6 +5,7 @@ import {
   NotFoundError,
   UnauthenticatedError,
 } from '../errors/index.js'
+import checkPermissions from '../utils/checkPermissions.js'
 
 const createJob = async (req, res) => {
   const { position, company } = req.body
@@ -41,12 +42,15 @@ const updateJob = async (req, res) => {
   }
 
   // check permissions
+
+  checkPermissions(req.user, job.createdBy)
+
   const updatedJob = await Job.findOneAndUpdate({ _id: jobId }, req.body, {
     new: true,
     runValidators: true,
   })
 
-  res.status(StatusCodes.OK).json({ updateJob })
+  res.status(StatusCodes.OK).json({ updatedJob })
 }
 const showStats = async (req, res) => {
   res.send('show stats')
