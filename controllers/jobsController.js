@@ -45,7 +45,7 @@ const getAllJobs = async (req, res) => {
 //
 const updateJob = async (req, res) => {
   const { id: jobId } = req.params
-  const { company, position, jobLocation } = req.body
+  const { company, position } = req.body
 
   if (!position || !company) {
     throw new BadRequestError('Please provide all values')
@@ -56,7 +56,6 @@ const updateJob = async (req, res) => {
   }
 
   // check permissions
-
   checkPermissions(req.user, job.createdBy)
 
   const updatedJob = await Job.findOneAndUpdate({ _id: jobId }, req.body, {
