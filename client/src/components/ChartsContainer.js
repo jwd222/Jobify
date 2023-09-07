@@ -1,5 +1,3 @@
-import StatsItem from './StatsItem'
-
 const ChartsContainer = () => {
   return (
     <div>
