@@ -29,6 +29,7 @@ import {
   EDIT_JOB_ERROR,
   SHOW_STATS_BEGIN,
   SHOW_STATS_SUCCESS,
+  CLEAR_FILTERS,
 } from './action'
 import axios from 'axios'
 
@@ -330,7 +331,7 @@ const AppProvider = ({ children }) => {
   }
 
   const clearFilters = () => {
-    console.log('clear filters')
+    dispatch({ type: CLEAR_FILTERS })
   }
 
   return (
