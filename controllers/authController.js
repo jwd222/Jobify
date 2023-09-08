@@ -69,8 +69,6 @@ const updateUser = async (req, res) => {
     token,
     location: user.location,
   })
-  // console.log(req.user)
-  // res.send('update user')
 }
 
 export { register, login, updateUser }
