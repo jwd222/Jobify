@@ -1,7 +1,7 @@
 # Jobify
 Job managing platform that integrates the MERN stack. More functionailty currently in development.
 
-# WORK IN PROGRESS. PLEASE BE A LITTLE PATIENT. THANK YOU
+# PROJECT COMPLETED, README WILL BE UPDATED SOON
 
 ### Run the app
 `npm start` in the console runs both the server and the client. The cleint runs on the port 3000 with a proxy connection to the server on the port 5000.
