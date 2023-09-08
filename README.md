@@ -1,13 +1,12 @@
 # Jobify
-Job managing platform that integrates the MERN stack. More functionailty currently in development.
+Job managing platform that integrates the MERN stack.
 
 # PROJECT COMPLETED, README WILL BE UPDATED SOON
 
-### Run the app
-`npm start` in the console runs both the server and the client. The cleint runs on the port 3000 with a proxy connection to the server on the port 5000.
+### Run app for production
+`npm run setup-production` in the console to build. The cleint runs on the port 3000 with a proxy connection to the server on the port 5000.
+`node server.js` to start the app on localhost:5000 with static assets.
 
-### Run Client only
-`npm run client`
-
-### Run Server only
-`npm run server`
+### Run the app for testing
+`npm install-client` to install the frontend client and `npm install` to install the backend server.  
+`npm start` in the console to start. The cleint runs on the localhost:3000, with a proxy connection to the server on the port 5000.
