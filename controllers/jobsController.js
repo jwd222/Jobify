@@ -38,7 +38,22 @@ const deleteJob = async (req, res) => {
 }
 //
 const getAllJobs = async (req, res) => {
-  const jobs = await Job.find({ createdBy: req.user.userId })
+  const { search, status, jobType, sort } = req.query
+
+  const queryObject = { createdBy: req.user.userId }
+  // add stuff based on conditions
+  if (status !== 'all') {
+    queryObject.status = status
+  }
+  if (jobType !== 'all') {
+    queryObject.jobType = jobType
+  }
+
+  // no await
+  let result = Job.find(queryObject)
+
+  // chain sort conditions
+  const jobs = await result
 
   res
     .status(StatusCodes.OK)
