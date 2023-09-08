@@ -48,11 +48,26 @@ const getAllJobs = async (req, res) => {
   if (jobType !== 'all') {
     queryObject.jobType = jobType
   }
+  if (search) {
+    queryObject.position = { $regex: search, $options: 'i' }
+  }
 
   // no await
   let result = Job.find(queryObject)
 
   // chain sort conditions
+  if (sort === 'latest') {
+    result = result.sort('-createdAt')
+  }
+  if (sort === 'oldest') {
+    result = result.sort('createdAt')
+  }
+  if (sort === 'a-z') {
+    result = result.sort('position')
+  }
+  if (sort === 'z-a') {
+    result = result.sort('-position')
+  }
   const jobs = await result
 
   res
